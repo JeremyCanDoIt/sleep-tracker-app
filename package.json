@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@capacitor/local-notifications": "^1.1.0",
+    "@capacitor/storage": "^1.2.5"
+  }
+}

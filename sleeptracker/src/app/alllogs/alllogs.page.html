@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="close()" fill="clear">
+      <ion-icon  slot="icon-only" name="close-outline"></ion-icon>
+    </ion-button>
+    <ion-title class="gradient-text">All Logs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div  *ngFor="let log of staticData" style="justify-content: center; display: flex;">
+      <ion-item>
+        <ion-card class="border-gradient border-gradient-purple">
+     
+          <h5 *ngIf="getLogType(log)=='Sleep Log'"
+           style="color: rgba(111,55,255,1);text-align: center;">Sleep Log</h5>
+           <h5 *ngIf="getLogType(log)=='Drowsy Log'" 
+           style="color: rgba(111,55,255,1);text-align: center;">Drowsiness Log</h5>
+    
+          <ion-row>
+            <ion-col size="4"style="text-align: center;"class="icon-col">
+              <ion-icon *ngIf="getLogType(log)=='Sleep Log'"
+               color="pink"name="bed-outline"></ion-icon>
+    
+               <ion-icon *ngIf="getLogType(log)=='Drowsy Log'"
+               color="pink"name="cloudy-night-outline"></ion-icon>
+            </ion-col>
+            <ion-col  style="text-align: center;">
+            <p >{{getLogInfo(log)}}</p>
+           
+          </ion-col >
+          
+          </ion-row>
+          
+        </ion-card>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

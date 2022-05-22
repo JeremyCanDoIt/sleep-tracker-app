@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-button (click)="close()" fill="clear">
+      <ion-icon  slot="icon-only" name="close-outline"></ion-icon>
+    </ion-button>
+
+    <ion-title class="gradient-text">Drowsy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--This portion is the content of the modal which contains both the -->
+<!--sleepiness value and time when the user was sleepy during that current day-->
+<ion-content>
+  <div id="stanford">
+    <ion-card class="border-gradient border-gradient-purple">
+      <ion-card-header>
+        <ion-card-title class="gradient-text" style="text-align: center;"size="large">Drowsy Level</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+      <ion-radio-group value="level" allow-empty-selection="true" (ionChange)="updateRadioSelect($event)">
+<!--        <ion-list-header>-->
+<!--          <ion-label class="gradient-text">Drowsy Level</ion-label>-->
+<!--        </ion-list-header>-->
+
+        <ion-item>
+          <ion-label class="gradient-text level">1: Wide awake</ion-label>
+          <ion-radio slot="start" value="1"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="gradient-text level">2: Awake, not at peak</ion-label>
+          <ion-radio slot="start" value="2"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="gradient-text level">3: Awake and relaxed</ion-label>
+          <ion-radio slot="start" value="3"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="gradient-text level">4: Somewhat foggy</ion-label>
+          <ion-radio slot="start" value="4"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="gradient-text level">5: Slowed downed</ion-label>
+          <ion-radio slot="start" value="5"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="gradient-text level">6: Woozy and sleepy</ion-label>
+          <ion-radio slot="start" value="6"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="gradient-text level">7: Sleep onset soon</ion-label>
+          <ion-radio slot="start" value="7"></ion-radio>
+        </ion-item>
+
+        </ion-radio-group>
+      </ion-list>
+    </ion-card>
+  </div>
+
+<!--  <div id="datetime">-->
+<!--    <ion-list-header>-->
+<!--      <ion-label class="gradient-text">When were you drowsy?</ion-label>-->
+<!--    </ion-list-header>-->
+<!--    <ion-datetime presentation="time-date" size="cover"-->
+<!--      [value]="dateValue"-->
+<!--      done-text>-->
+<!--&lt;!&ndash;      <ion-buttons slot="buttons">&ndash;&gt;-->
+<!--&lt;!&ndash;        <ion-button (click)="confirm(datetime.value)">Good to go!</ion-button>&ndash;&gt;-->
+<!--&lt;!&ndash;      </ion-buttons>&ndash;&gt;-->
+<!--    </ion-datetime>-->
+<!--  </div>-->
+
+  <div id="time">
+    <ion-card class="border-gradient border-gradient-purple">
+      <ion-card-header>
+        <ion-card-title class="gradient-text" style="text-align: center;"size="large">Time</ion-card-title>
+      </ion-card-header>
+<!--      <ion-list-header>-->
+<!--        <ion-label class="gradient-text">When were you drowsy today?</ion-label>-->
+<!--      </ion-list-header>-->
+      <ion-item>
+        <ion-datetime  class="center-screen" size="cover"
+            [(ngModel)]="timeValue"
+            display-format="HH:mm"
+            presentation="time"
+            placeholder="Select Time">
+<!--                <ion-buttons slot="buttons">-->
+<!--                  <ion-button (click)="confirm()">Good to go!</ion-button>-->
+<!--                </ion-buttons>-->
+        </ion-datetime>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <div id="doneButton" class="center-screen">
+    <ion-buttons slot="buttons">
+      <ion-button (click)="confirm()" fill="clear">
+              <ion-icon  slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </div>
+</ion-content>
+
+<!--<ion-footer>-->
+<!--      <ion-button (click)="close()" fill="clear">-->
+<!--      <ion-icon  slot="icon-only" name="close-outline"></ion-icon>-->
+<!--    </ion-button>-->
+<!--</ion-footer>-->
+
+<!--<ion-content>-->
+<!--    <div id="time">-->
+<!--&lt;!&ndash;      calendar not working&ndash;&gt;-->
+<!--      <ion-item>-->
+<!--        <ion-label>Date & Time</ion-label>-->
+<!--          <ion-datetime-->
+<!--          displayFormat="hh:mm:ss A"-->
+<!--          pickerFormat="HH:mm">-->
+<!--          </ion-datetime>-->
+<!--      </ion-item>-->
+<!--&lt;!&ndash;        <ion-item>&ndash;&gt;-->
+<!--&lt;!&ndash;   <ion-label>Date</ion-label>&ndash;&gt;-->
+<!--&lt;!&ndash;   <ion-datetime display-format="MM/DD/YYYY">&ndash;&gt;-->
+<!--&lt;!&ndash;   </ion-datetime>&ndash;&gt;-->
+<!--&lt;!&ndash;  </ion-item>&ndash;&gt;-->
+<!--&lt;!&ndash;    <ion-item>&ndash;&gt;-->
+<!--&lt;!&ndash;      <ion-label>Date</ion-label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <ion-datetime displayFormat="DD-MMM-YYYY"></ion-datetime>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ion-item>&ndash;&gt;-->
+<!--  </div>-->
+<!--</ion-content>-->
+<!--(ngModel)]="date"-->
+<!--    displayFormat="MMM DD, YYYY HH:mm"-->
+<!--    formControlName="myDate">-->

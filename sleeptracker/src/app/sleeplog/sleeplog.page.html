@@ -1,0 +1,86 @@
+<ion-header>
+  
+  <ion-toolbar>
+    
+    <ion-button (click)="close()" fill="clear">
+      <ion-icon  slot="icon-only" name="close-outline"></ion-icon>
+    </ion-button>
+    
+    <ion-title class="gradient-text">Sleep</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row>
+
+<!--  -->
+<ion-col style="text-align: center;">
+  <button  id="open-modal" (click)="openEndDateFrom()"class="ion-activatable app-btn ripple-parent" >From Date<ion-ripple-effect ></ion-ripple-effect>
+  </button>
+  <ion-modal [isOpen]="showDateModalFrom"trigger="open-modal">
+    <ng-template>
+      <ion-content style="--ion-background-color: #0c0d0c!important;">
+        <ion-datetime #datetime [(ngModel)]="fromDate" (ionChange)="processFromDate()"></ion-datetime>
+      </ion-content>
+      <ion-footer class="footer">
+        <ion-row>
+          <ion-col style="text-align: center;">
+           <button  (click)="dismissDatetimeFrom()" class="ok-datetime ion-activatable ripple-parent">Done
+            <ion-ripple-effect ></ion-ripple-effect>
+           </button>
+     
+              
+             </ion-col>
+           </ion-row>
+      </ion-footer>
+    </ng-template>
+  </ion-modal>
+  <div class="display-box border-gradient border-gradient-purple" >
+    <p class="gradient-text">{{presentFDate}}</p>
+  </div>
+
+</ion-col>
+</ion-row>
+
+
+<ion-row>
+
+
+  <ion-col style="text-align: center;">
+      <button  id="open-modal2" (click)="openEndDate()"class="ion-activatable app-btn ripple-parent" >End Date<ion-ripple-effect ></ion-ripple-effect>
+      </button>
+      <ion-modal [isOpen]="showDateModal"trigger="open-modal2">
+        <ng-template>
+          <ion-content force-overscroll="false"style="--ion-background-color: #0c0d0c!important;">
+            <ion-datetime #datetime [(ngModel)]="toDate" (ionChange)="processToDate()"></ion-datetime>
+          </ion-content>
+          <ion-footer class="footer">
+            <ion-row>
+              <ion-col style="text-align: center;">
+               <button (click)="dismissDatetime()" class=" ok-datetime ion-activatable ripple-parent">Done
+                 <ion-ripple-effect ></ion-ripple-effect></button>
+         
+                  
+                 </ion-col>
+               </ion-row>
+          </ion-footer>
+        </ng-template>
+      </ion-modal>
+      <div class="display-box border-gradient border-gradient-purple" >
+        <p class="gradient-text">{{presentTDate}}</p>
+      </div>
+
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col style="text-align: center;">
+    <ion-button (click)="save()" fill="clear">
+    <ion-icon  slot="icon-only" name="pencil-outline"></ion-icon>
+  </ion-button>
+  </ion-col>
+  
+</ion-row>
+</ion-content>
+
+<ion-footer>
+</ion-footer>

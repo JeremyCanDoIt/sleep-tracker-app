@@ -1,0 +1,82 @@
+
+<ion-header >
+  <ion-toolbar>
+    <ion-title class="gradient-text"style="text-align: center;"size="large">Sleep Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="curr_time">
+    <ion-card class="border-gradient border-gradient-purple">
+      <ion-card-header>
+        <ion-card-title class="gradient-text" style="text-align: center;"size="large">Time</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content style="text-align: center;">
+        <h1 id="time" class="gradient-text">{{ time | date: 'h:mm:ss a' }}</h1>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div id="logs">
+    <ion-card-subtitle class="gradient-text" style="text-align: center;"size="large">Most Recent</ion-card-subtitle>
+    <ion-card id="most-recent-log"class="border-gradient border-gradient-purple">
+
+      <h5 *ngIf="mostRecentData()=='OvernightSleepData'"
+       style="color: rgba(111,55,255,1);text-align: center;">Overnight Sleep</h5>
+       <h5 *ngIf="mostRecentData()=='StanfordSleepinessData'"
+       style="color: rgba(111,55,255,1);text-align: center;">Drowsiness Log</h5>
+
+      <ion-row>
+        <ion-col *ngIf="mostRecentData()!='None'"size="4"style="text-align: center;"class="icon-col">
+          <ion-icon *ngIf="mostRecentData()=='OvernightSleepData'"
+           color="pink"name="bed-outline"></ion-icon>
+
+           <ion-icon  *ngIf="mostRecentData()=='StanfordSleepinessData'"
+           color="pink"name="cloudy-night-outline"></ion-icon>
+        </ion-col>
+        <ion-col  style="text-align: center;">
+        <p *ngIf="mostRecentData()=='OvernightSleepData'
+        "style="padding-top: 6px;">Slept {{mostRecentDataSumm()}} on {{mostRecentDataDate()}}</p>
+        <p *ngIf="mostRecentData()=='StanfordSleepinessData'
+        "style="font-size:14px;padding-top: 4px;">Drowsy level {{mostRecentDataSumm()}} on {{mostRecentDataDate()}}</p>
+        <p class="gradient-text"*ngIf="mostRecentData()=='None'
+        "style="font-size: 20px;padding-top: 50px;">No recent logs!</p>
+      </ion-col >
+
+      </ion-row>
+
+    </ion-card>
+    <ion-row>
+     <ion-col style="text-align: right;">
+      <button id="view-all" (click)="initAlllogsModal()" class="ion-activatable">View All Logs</button>
+
+        </ion-col>
+      </ion-row>
+  </div>
+
+
+</ion-content>
+<ion-footer>
+  <ion-row>
+
+
+      <ion-col style="text-align: center;">
+          <button (click)="initModal()" class="ion-activatable app-btn ripple-parent"  >Log Overnight Sleep<ion-ripple-effect ></ion-ripple-effect>
+          </button>
+
+
+      </ion-col>
+  </ion-row>
+  <ion-row>
+
+
+    <ion-col style="text-align: center;">
+        <button  (click)="initDroswyModal()" class="ion-activatable app-btn ripple-parent" >Log Drowsy Moments<ion-ripple-effect ></ion-ripple-effect>
+        </button>
+
+    </ion-col>
+</ion-row>
+</ion-footer>
+
